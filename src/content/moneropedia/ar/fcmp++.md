@@ -7,39 +7,35 @@ terms:
   - full-chain-membership-proofs
 ---
 
-### The Basics
+### الأساسيات
 
-**FCMP++** (Full-Chain Membership Proofs + Spend Authorization + Linkability) is
-the system Monero uses to prove that @transaction inputs are valid and unspent
-without revealing which outputs are actually being spent.
+**FCMP++** (إثباتات العضوية الكاملة للسلسلة + تفويض الإنفاق + قابلية الربط) هو
+النظام الذي تستخدمه Monero لإثبات أن مدخلات @transaction صالحة وغير منفقة دون
+الكشف عن المخرجات التي يتم إنفاقها بالفعل.
 
-Each FCMP++ input proves it does spend **one output from the entire set of
-eligible outputs on the @blockchain**. The proof itself does not leak any
-information about which specific output is real.
+يثبت كل إدخال FCMP++ أنه ينفق **مخرجًا واحدًا من مجموعة المخرجات المؤهلة بالكامل
+على @blockchain**. لا يكشف الدليل نفسه أي معلومات حول المخرج المحدد الحقيقي.
 
-From a chain observer’s perspective, it is not possible to determine the real
-input.
+من وجهة نظر مراقب السلسلة، لا يمكن تحديد المدخلات الحقيقية.
 
-### What It Improves
+### ما الذي يحسنه
 
-Compared to @CLSAG:
+مقارنة بـ @CLSAG:
 
-- The **anonymity set is the entire set of Monero transactions in history**, not
-  a ring of 16.
-- **Double-spend detection** still works using linkable tags that cannot be tied
-  back to a concrete on-chain output.
-- **Spend authorization** is cleanly separated: the proof shows the spender
-  controls the key to _some_ valid output in the global set, but never which
-  one.
+- **مجموعة المجهولية هي مجموعة كاملة من معاملات Monero في التاريخ**، وليست حلقة
+  من 16 معاملة.
+- **لا يزال اكتشاف الإنفاق المزدوج** يعمل باستخدام علامات قابلة للربط لا يمكن
+  ربطها بناتج ملموس على السلسلة.
+- **تفويض الإنفاق** مفصول بشكل واضح: يثبت الدليل أن المنفق يتحكم في مفتاح _بعض_
+  المخرجات الصالحة في المجموعة الشاملة، ولكن لا يثبت أبدًا أي منها.
 
-### New Capabilities
+### قدرات جديدة
 
-FCMP++ also enables new functionality:
+كما يتيح FCMP++ وظائف جديدة:
 
-- **Transaction chaining** - safely spending outputs from still-unconfirmed
-  transactions, useful for advanced protocols and potential layer-2 designs.
-- **Outgoing view keys** - optional keys that let a chosen auditor or watch-only
-  device see both incoming and outgoing transfers, without granting any spend
-  rights.
-- **Stronger long-term privacy** - the design ensures that transactions do not
-  expose information that future analysis can use to recover the real inputs.
+- **تسلسل المعاملات** - إنفاق مخرجات المعاملات التي لم يتم تأكيدها بعد بأمان،
+  وهو أمر مفيد للبروتوكولات المتقدمة وتصميمات الطبقة الثانية المحتملة.
+- **مفاتيح العرض الصادرة** - مفاتيح اختيارية تسمح لمدقق مختار أو جهاز مخصص
+  للمراقبة فقط برؤية التحويلات الواردة والصادرة، دون منح أي حقوق إنفاق.
+- **خصوصية أقوى على المدى الطويل** - يضمن التصميم عدم كشف المعاملات عن المعلومات
+  التي يمكن أن تستخدمها التحليلات المستقبلية لاستعادة المدخلات الحقيقية.
